@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import HomePage from './pages/HomePage'
 import { Route, BrowserRouter as Router } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.css';
 
 const routing = (
   <Router>
