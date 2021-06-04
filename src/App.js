@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
-import HomePage from './pages/HomePage';
+import CampaignPage from './pages/CampaignPage';
 import LoginPage from './pages/LoginPage';
 import useToken from './components/useToken';
 
@@ -16,8 +16,8 @@ function App() {
   return (
       <BrowserRouter>
         <Switch>
-        <Route exact path= {["/home", "/"]} >
-            <HomePage />
+        <Route exact path= {["/campaigns", "/"]} >
+            <CampaignPage />
           </Route>
 
         </Switch>

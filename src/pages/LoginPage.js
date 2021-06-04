@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Alert } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 async function loginUser(credentials) {
     return fetch('http://localhost:8080/login', {
@@ -35,7 +36,6 @@ export default function LoginPage({ setToken }) {
 
     }
 
-
     const onDismiss = () => setVisible(false);
 
     return (
@@ -46,19 +46,18 @@ export default function LoginPage({ setToken }) {
                 </Alert>
             }
             <h1>Please Log In</h1>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    <p>Username</p>
-                    <input type="text" onChange={e => setUserName(e.target.value)} />
-                </label>
-                <label>
-                    <p>Password</p>
-                    <input type="password" onChange={e => setPassword(e.target.value)} />
-                </label>
-                <div>
-                    <button type="submit">Submit</button>
-                </div>
-            </form>
+            <Form onSubmit={handleSubmit}>
+                <FormGroup>
+                    <Label for="username">Username</Label>
+                    <Input type="text" name="username" id="username" onChange={e => setUserName(e.target.value)} />
+                </FormGroup>
+                <FormGroup>
+                    <Label for="password">Password</Label>
+                    <Input type="password" name="password" id="password" placeholder="password placeholder" onChange={e => setPassword(e.target.value)} />
+                </FormGroup>
+                <Button>Submit</Button>
+            </Form>
+
         </div>
     )
 }
