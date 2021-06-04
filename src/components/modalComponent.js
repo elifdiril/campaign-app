@@ -7,28 +7,48 @@ export default class ModalComponent extends Component {
         super(props);
 
         this.state = {
-            updatedItem: {}
+            updatedItem: this.props.item,
+            item: this.props.item,
+            modal: this.props.modal
         }
+        this.onChange = this.onChange.bind(this);
+    }
+
+    onChange(e) {
+        let newValue = e.target.value;
+        let targetName = e.target.name;
+        let newCampElement = this.state.item;
+
+        if (targetName === 'name') {
+            newCampElement.name = newValue
+        }
+
+        else if (targetName === 'description') {
+            newCampElement.description = newValue
+        }
+
+        this.setState({
+            updatedItem: JSON.stringify(newCampElement)
+        });
     }
 
     render() {
         return (
-            <Modal isOpen={this.props.modal} toggle={this.props.toggle}>
-                <ModalHeader toggle={this.props.toggle}></ModalHeader>
+            <Modal isOpen={this.props.modal}>
+                <ModalHeader>Details</ModalHeader>
                 <ModalBody>
                     <FormGroup>
-                        <Label for="name">Campaing Name</Label>
-                        <Input type="textarea" name="itemName" id="itemName"/>
+                        <Label for="name">Campaign Name</Label>
+                        <Input type="textarea" name="name" id="name" value={this.state.updatedItem.name} onChange={this.onChange} />
 
-                        <Label for="description">Campaing Name</Label>
-                        <Input type="textarea" name="itemDescription" id="itemDescription"/>
+                        <Label for="description">Campaing Description</Label>
+                        <Input type="textarea" name="description" id="description" value={this.state.updatedItem.description} onChange={this.onChange} />
 
-                        <Button onClick= {() => this.props.updateCampaign(this.state.updatedItem, this.props.item.id)} color="warning">Update Campaign</Button>
+                        <Button onClick={() => {this.props.updateCampaign(this.state.updatedItem, this.state.item.id); this.props.toggle()}} color="warning">Update Campaign</Button>
+                        <Button onClick={this.props.toggle}>Close</Button>
                     </FormGroup>
                 </ModalBody>
             </Modal>
         )
-
     }
-
 }

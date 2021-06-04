@@ -7,7 +7,7 @@ export default class CampaignElement extends Component {
     constructor(props) {
         super(props)
 
-        this.state = {modal: false}
+        this.state = {modal: false, item: this.props.item}
         this.toggle = this.toggle.bind(this);
     }
 
@@ -46,7 +46,8 @@ export default class CampaignElement extends Component {
                 <ModalComponent
                 modal={this.state.modal}
                 toggle={this.toggle}
-                updateCampaign={this.props.updateCampaign}/>
+                item={this.state.item}
+                updateCampaign={(newItem)=>this.props.updateCampaign(newItem, this.state.item.id)}/>
             </div>
         );
     }

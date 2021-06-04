@@ -21,7 +21,7 @@ const CampaignList = [
 export default function CampaignPage() {
 
     const [item, setItem] = useState(JSON.parse(localStorage.getItem('item')));
-    
+
     useEffect(() => {
         localStorage.setItem('item', JSON.stringify(CampaignList));
     }, []);
@@ -52,10 +52,11 @@ export default function CampaignPage() {
     }
 
     const updateCampaign = (newItem, index) => {
+        let updatedCampList = JSON.parse(localStorage.getItem('item'));
         if (index !== -1 && index !== null) {
             let newCampList = JSON.parse(newItem);
-
-            localStorage.setItem('item', JSON.stringify(newCampList));
+            updatedCampList[index] = newCampList;
+            localStorage.setItem('item', JSON.stringify(updatedCampList));
             setItem(newCampList);
         }
     }
