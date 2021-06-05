@@ -54,10 +54,10 @@ export default function CampaignPage() {
     const updateCampaign = (newItem, index) => {
         let updatedCampList = JSON.parse(localStorage.getItem('item'));
         if (index !== -1 && index !== null) {
-            let newCampList = JSON.parse(newItem);
+            let newCampList = newItem;
             updatedCampList[index] = newCampList;
             localStorage.setItem('item', JSON.stringify(updatedCampList));
-            setItem(newCampList);
+            setItem(updatedCampList);
         }
     }
 

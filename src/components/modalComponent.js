@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { FormGroup, Label, Modal, ModalBody, ModalHeader, Input, Button } from 'reactstrap';
 
+/*todo
+
+default input value update işleminden sonra boş geliyor
+*/
+
 export default class ModalComponent extends Component {
 
     constructor(props) {
@@ -28,7 +33,7 @@ export default class ModalComponent extends Component {
         }
 
         this.setState({
-            updatedItem: JSON.stringify(newCampElement)
+            updatedItem: newCampElement
         });
     }
 
