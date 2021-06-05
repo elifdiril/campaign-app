@@ -20,11 +20,11 @@ const CampaignList = [
 
 export default function CampaignPage() {
 
-    const [item, setItem] = useState(JSON.parse(localStorage.getItem('item')));
+    const [item, setItem] = useState(JSON.stringify(CampaignList));
 
     useEffect(() => {
         localStorage.setItem('item', JSON.stringify(CampaignList));
-    }, []);
+    });
 
 
     const increasePoint = (index) => {
@@ -61,7 +61,7 @@ export default function CampaignPage() {
         }
     }
 
-    const CampList = JSON.parse(localStorage.getItem('item'));
+    const CampList = CampaignList;
 
     return (
         <div>
